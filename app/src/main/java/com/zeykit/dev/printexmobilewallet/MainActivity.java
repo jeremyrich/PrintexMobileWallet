@@ -3,19 +3,15 @@ package com.zeykit.dev.printexmobilewallet;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import im.delight.android.webview.AdvancedWebView;
 
@@ -23,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
 
     final String mPrintexWalletUrl = "http://webwallet.printex.tech/";
 
-    ActionBar mActionBar;
     SwipeRefreshLayout mSwipeRefreshLayout;
     AdvancedWebView mWebView;
     FrameLayout mFrameLayout;
@@ -33,8 +28,6 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        setupActionBar();
         init();
     }
 
@@ -83,25 +76,6 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
             });
 
             mWebView.loadUrl(mPrintexWalletUrl);
-        }
-    }
-
-    private void setupActionBar() {
-        mActionBar = getSupportActionBar();
-        if (mActionBar != null) {
-            TextView mTextView = new TextView(this);
-
-            ActionBar.LayoutParams mLayoutParams = new ActionBar.LayoutParams(
-                    ActionBar.LayoutParams.MATCH_PARENT,
-                    ActionBar.LayoutParams.WRAP_CONTENT);
-
-            mTextView.setLayoutParams(mLayoutParams);
-            mTextView.setText(mActionBar.getTitle());
-            mTextView.setTextColor(Color.BLACK);
-            mTextView.setGravity(Gravity.CENTER);
-
-            mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            mActionBar.setCustomView(mTextView);
         }
     }
 
@@ -166,4 +140,23 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
 
     @Override
     public void onExternalPageRequest(String url) {}
+
+    /*private void setupActionBar() {
+        mActionBar = getSupportActionBar();
+        if (mActionBar != null) {
+            TextView mTextView = new TextView(this);
+
+            ActionBar.LayoutParams mLayoutParams = new ActionBar.LayoutParams(
+                    ActionBar.LayoutParams.MATCH_PARENT,
+                    ActionBar.LayoutParams.WRAP_CONTENT);
+
+            mTextView.setLayoutParams(mLayoutParams);
+            mTextView.setText(mActionBar.getTitle());
+            mTextView.setTextColor(Color.BLACK);
+            mTextView.setGravity(Gravity.CENTER);
+
+            mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            mActionBar.setCustomView(mTextView);
+        }
+    }*/
 }
